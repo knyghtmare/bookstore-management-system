@@ -9,11 +9,9 @@ import src_dir.backend
 if __name__ == "__main__":
     root = Tk()
     root.title("Bookstore Management System")
-    root.geometry("500x450")
+    root.geometry("610x230")
     # preventing a resize
     # root.resizable(False, False)
-
-
     # instantiate the class
     app = Application(master=root)
     # loop it

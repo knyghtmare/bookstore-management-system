@@ -12,7 +12,6 @@ class Application(Frame):
         # the variables
         self.title_text = StringVar()
         self.author_text = StringVar()
-        self.selected_tuple = IntVar()
         self.isbn_int = IntVar()
         self.price_int = IntVar()
         self.id_int = IntVar()
@@ -41,8 +40,8 @@ class Application(Frame):
             self.price_int.get(),
             self.isbn_int.get()
         )
-        list1.delete(0, END)
-        list1.insert(
+        self.list1.delete(0, END)
+        self.list1.insert(
             END,
             (self.id_int.get(),
             self.title_text.get(),
@@ -52,18 +51,19 @@ class Application(Frame):
         )
 
     def get_selected_row(self, event):
+        global selected_tuple
         self.index = self.list1.curselection()[0]
-        self.selected_tuple = self.list1.get(index)
+        selected_tuple = self.list1.get(index)
         self.e1.delete(0, END)
-        self.e1.insert(END, self.selected_tuple[1])
+        self.e1.insert(END, selected_tuple[1])
         self.e2.delete(0, END)
-        self.e2.insert(END, self.selected_tuple[2])
+        self.e2.insert(END, selected_tuple[2])
         self.e3.delete(0, END)
-        self.e3.insert(END, self.selected_tuple[3])
+        self.e3.insert(END, selected_tuple[3])
         self.e4.delete(0, END)
-        self.e4.insert(END, self.selected_tuple[4])
+        self.e4.insert(END, selected_tuple[4])
         self.e5.delete(0, END)
-        self.e5.insert(END, self.selected_tuple[0])
+        self.e5.insert(END, selected_tuple[0])
 
     def update_command(self):
         update_entry(
@@ -75,7 +75,8 @@ class Application(Frame):
             )
 
     def delete_command(self):
-        delete_entry(self.selected_tuple[0])
+        # global selected_tuple
+        delete_entry(self.e5.get())
 
     def setup_all(self):
         # the labels

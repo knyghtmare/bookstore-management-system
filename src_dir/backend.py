@@ -125,7 +125,7 @@ def update_entry(book_id, title, author, price, isbn):
 
     cursor = conn.cursor()
     cursor.execute('''
-        "UPDATE books SET title='{}', author='{}', price={}, isbn={} WHERE book_id={}
+        UPDATE books SET title='{}', author='{}', price={}, isbn={} WHERE book_id={}
         '''.format(title, author, price, isbn, book_id)
     )
     conn.commit()
