@@ -7,8 +7,8 @@ class MyWidget(QtWidgets.QWidget):
         QtWidgets.QWidget.__init__(self)
         self.left = 300
         self.top = 300
-        self.width = 400
-        self.height = 450
+        self.width = 600
+        self.height = 400
         self.init_widgets()
         self.init_layout()
         self.init_events()
@@ -18,15 +18,13 @@ class MyWidget(QtWidgets.QWidget):
         self.setWindowTitle("Bookstore Management System")
         self.setGeometry(self.left, self.top, self.width, self.height)
         # labels
+        self.bookID = QtWidgets.QLabel("Book ID")
         self.bookTitle = QtWidgets.QLabel("Book Title")
-        self.bookTitle.setAlignment(QtCore.Qt.AlignCenter)
         self.bookAuthor = QtWidgets.QLabel("Book Author")
-        self.bookAuthor.setAlignment(QtCore.Qt.AlignCenter)
         self.bookPrice = QtWidgets.QLabel("Book Price")
-        self.bookPrice.setAlignment(QtCore.Qt.AlignCenter)
         self.bookISBN = QtWidgets.QLabel("ISBN")
-        self.bookISBN.setAlignment(QtCore.Qt.AlignCenter)
         # entry fields
+        self.bookIDEntry = QtWidgets.QLineEdit("Enter ID")
         self.bookTitleEntry = QtWidgets.QLineEdit("Enter Title")
         self.bookAuthorEntry = QtWidgets.QLineEdit("Enter Author")
         self.bookPriceEntry = QtWidgets.QLineEdit("Enter Price")
@@ -40,22 +38,28 @@ class MyWidget(QtWidgets.QWidget):
         self.buttonSix = QtWidgets.QPushButton("Exit the App")
         # listbox
         self.listbox = QtWidgets.QListWidget()
+        # scrollbar
+        self.scrollbar = QtWidgets.QScrollBar(self.listbox)
+        self.scrollbar.setRange(0, 20)
         return self
 
     def init_layout(self):
         self.layout = QtWidgets.QGridLayout()
         # labels
-        self.layout.addWidget(self.bookTitle, 0, 0)
-        self.layout.addWidget(self.bookAuthor, 1, 0)
-        self.layout.addWidget(self.bookPrice, 2, 0)
-        self.layout.addWidget(self.bookISBN, 3, 0)
+        self.layout.addWidget(self.bookID, 0, 0)
+        self.layout.addWidget(self.bookTitle, 1, 0)
+        self.layout.addWidget(self.bookAuthor, 2, 0)
+        self.layout.addWidget(self.bookPrice, 3, 0)
+        self.layout.addWidget(self.bookISBN, 4, 0)
         # entry fields
-        self.layout.addWidget(self.bookTitleEntry, 0, 1)
-        self.layout.addWidget(self.bookAuthorEntry, 1, 1)
-        self.layout.addWidget(self.bookPriceEntry, 2, 1)
-        self.layout.addWidget(self.bookISBNEntry, 3, 1)
+        self.layout.addWidget(self.bookIDEntry, 0, 1)
+        self.layout.addWidget(self.bookTitleEntry, 1, 1)
+        self.layout.addWidget(self.bookAuthorEntry, 2, 1)
+        self.layout.addWidget(self.bookPriceEntry, 3, 1)
+        self.layout.addWidget(self.bookISBNEntry, 4, 1)
         # listbox
-        self.layout.addWidget(self.listbox, 6, 0, 5, 5)
+        self.layout.addWidget(self.listbox, 6, 0, 1, 5)
+        self.layout.addWidget(self.scrollbar, 6, 3, 1, 5)
         # buttons
         self.layout.addWidget(self.buttonOne, 0, 2)
         self.layout.addWidget(self.buttonTwo, 1, 2)
