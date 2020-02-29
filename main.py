@@ -1,6 +1,7 @@
 import sys
 from PySide2 import QtCore, QtWidgets, QtGui
 from src_dir.frontend import MyWidget
+import src_dir.backend
 
 
 if __name__ == "__main__":
