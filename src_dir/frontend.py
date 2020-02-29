@@ -1,4 +1,5 @@
 import random
+import sys
 from PySide2 import QtCore, QtWidgets, QtGui
 from src_dir.backend import *
 
@@ -72,8 +73,8 @@ class MyWidget(QtWidgets.QWidget):
         return self
 
     def init_events(self):
-        # self.button.clicked.connect(self.magic)
-        pass
+        # exit the app
+        self.buttonSix.clicked.connect(sys.exit)
 
     # def magic(self):
     #    self.text.setText(random.choice(self.hello))
