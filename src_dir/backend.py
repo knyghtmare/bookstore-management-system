@@ -28,7 +28,7 @@ def connect_to_database():
     conn.close()
 
 
-def insert_entry(book_id, title, author, year, price):
+def insert_entry(book_id, title, author, price, isbn):
     try:
         conn = psycopg2.connect(
             host='localhost',
@@ -44,7 +44,7 @@ def insert_entry(book_id, title, author, year, price):
     cursor.execute('''
         INSERT INTO books VALUES (
             {},'{}','{}',{},{})
-            '''.format(book_id, title, author, year, price)
+            '''.format(book_id, title, author, price, isbn)
         )
     conn.commit()
     conn.close()
@@ -69,7 +69,7 @@ def view_entries():
     return rows
 
 
-def search_entry(title="", author="", year="", price=""):
+def search_entry(title="", author="", price="", isbn=""):
     try:
         conn = psycopg2.connect(
             host='localhost',
@@ -83,8 +83,8 @@ def search_entry(title="", author="", year="", price=""):
 
     cursor = conn.cursor()
     cursor.execute('''
-        SELECT * FROM books WHERE title='{}' OR author='{}' OR year={} OR price={}
-        '''.format(title, author, year, price)
+        SELECT * FROM books WHERE title='{}' OR author='{}' OR price={} OR isbn={}
+        '''.format(title, author, price, isbn)
         )
     rows = cursor.fetchall()
     conn.close()
@@ -111,7 +111,7 @@ def delete_entry(book_id):
     conn.close()
 
 
-def update_entry(book_id, title, author, year, price):
+def update_entry(book_id, title, author, price, isbn):
     try:
         conn = psycopg2.connect(
             host='localhost',
@@ -125,8 +125,8 @@ def update_entry(book_id, title, author, year, price):
 
     cursor = conn.cursor()
     cursor.execute('''
-        "UPDATE books SET title='{}', author='{}', year={}, price={} WHERE book_id={}
-        '''.format(title, author, year, price, book_id)
+        "UPDATE books SET title='{}', author='{}', price={}, isbn={} WHERE book_id={}
+        '''.format(title, author, price, isbn, book_id)
     )
     conn.commit()
     conn.close()
