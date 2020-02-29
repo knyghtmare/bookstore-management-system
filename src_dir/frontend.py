@@ -72,8 +72,13 @@ class MyWidget(QtWidgets.QWidget):
         self.setLayout(self.layout)
         return self
 
+    def view_inventory(self):
+        for (a,b,c,d,e) in view_entries():
+            QtWidgets.QListWidgetItem.write(str(a),b,c,str(d),str(e))
+
     def init_events(self):
         # exit the app
+        self.buttonOne.clicked.connect(self.view_inventory)
         self.buttonSix.clicked.connect(sys.exit)
 
     # def magic(self):
