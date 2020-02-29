@@ -32,7 +32,7 @@ def insert_entry(book_id, title, author, price, isbn):
     try:
         conn = psycopg2.connect(
             host='localhost',
-            database='testdb',
+            database='bookstore',
             user='postgres',
             password='root',
             port=5432
@@ -54,7 +54,7 @@ def view_entries():
     try:
         conn = psycopg2.connect(
             host='localhost',
-            database='testdb',
+            database='bookstore',
             user='postgres',
             password='root',
             port=5432
@@ -73,7 +73,7 @@ def search_entry(title="", author="", price="", isbn=""):
     try:
         conn = psycopg2.connect(
             host='localhost',
-            database='testdb',
+            database='bookstore',
             user='postgres',
             password='root',
             port=5432
@@ -95,7 +95,7 @@ def delete_entry(book_id):
     try:
         conn = psycopg2.connect(
             host='localhost',
-            database='testdb',
+            database='bookstore',
             user='postgres',
             password='root',
             port=5432
@@ -115,7 +115,7 @@ def update_entry(book_id, title, author, price, isbn):
     try:
         conn = psycopg2.connect(
             host='localhost',
-            database='testdb',
+            database='bookstore',
             user='postgres',
             password='root',
             port=5432
